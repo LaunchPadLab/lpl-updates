@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  database: pad
+  encoding: utf8
+  template: template0
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: pad
+  encoding: utf8
+  template: template0
+  host: localhost
