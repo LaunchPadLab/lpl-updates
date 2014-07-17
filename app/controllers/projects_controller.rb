@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to company_path(6), notice: 'Project added!' }
+        format.html { redirect_to company_path(current_company), notice: 'Project added!' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }

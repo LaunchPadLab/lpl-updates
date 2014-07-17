@@ -6,10 +6,10 @@ class StatusUpdatesController < ApplicationController
 
     respond_to do |format|
       if @status_update.save
-        format.html { redirect_to company_path(6), notice: 'Status updated!' }
+        format.html { redirect_to company_path(current_company), notice: 'Status updated!' }
         format.json { render :show, status: :created, location: @status_update }
       else
-        format.html { redirect_to company_path(6), notice: 'Sorry, there was an issue updating the status.'}
+        format.html { redirect_to company_path(current_company), notice: 'Sorry, there was an issue updating the status.'}
         format.json { render json: @status_update.errors, status: :unprocessable_entity }
       end
     end
