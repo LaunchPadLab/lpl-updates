@@ -4,7 +4,7 @@ if Rails.env.development?
   Project.destroy_all
   StatusUpdate.destroy_all
 
-  user = User.create!(email: 'scott@launchpadlab.com', username: 'scottweisman')
+  user = User.create!(email: 'scott-dev@launchpadlab.com', username: 'scottdev')
 
 	company = Company.create!(name: 'LaunchPad Lab')
 
