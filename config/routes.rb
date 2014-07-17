@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'companies#show'
+  root 'pages#home'
 
   resources :companies
   resources :status_updates
   resources :projects
 
-  devise_for :users
+  devise_for :users, path_names: {sign_in: "signin", sign_out: "signout"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
   devise_scope :user do
-    # root to: "devise/sessions#new"
-    get "/signup" => "devise/registrations#new"
     get "/signin" => "devise/sessions#new"
     get "/signout" => "devise/sessions#destroy"
   end

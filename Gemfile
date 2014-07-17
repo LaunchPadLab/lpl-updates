@@ -17,7 +17,9 @@ gem 'foreman'
 gem 'figaro'
 gem 'newrelic_rpm'
 gem "devise", "~> 3.2.4"
+gem 'omniauth-github'
 gem 'foundation-rails'
+gem 'friendly_id', '~> 5.0.0'
 
 
 group :production, :staging do

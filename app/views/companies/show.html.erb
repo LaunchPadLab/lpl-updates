@@ -1,25 +1,42 @@
-<h1><%= @company.name %></h1>
+<h1 class="company_name"><%= @company.name %></h1>
 
-<div class="projects">
-	<% @projects.each do |project| %>
-		<div class="project">
-			<h3><%= project.name %></h3>
-			<%= form_for(StatusUpdate.new) do |f| %>
-				<%= f.hidden_field :project_id, value: project.id %>
-				<%#= f.hidden_field :user_id, value: current_user.id %>
-				<%= f.text_field :description %>
-			<% end %>
-			<div class="status_updates">
-				<% project.status_updates.by_created_on.each do |status_update| %>
-					<div class="status_update">
-						<%= status_update.description %>
-						<div class="status_update_meta">
-							<span class="date"><%= time_ago(status_update.created_at) %></span> &middot;
-							<span class="email">scottweisman<%#= current_user.email if current_user %></span>
-						</div>
-					</div>
+<% if current_user %>
+
+	<div class="projects clearfix">
+		<% 5.times do %>
+		<% @projects.each do |project| %>
+			<div class="project">
+				<h3><%= project.name %></h3>
+				<%= form_for(StatusUpdate.new) do |f| %>
+					<%= f.hidden_field :project_id, value: project.id %>
+					<%#= f.hidden_field :user_id, value: current_user.id %>
+					<%= f.text_field :description, placeholder: 'update' %>
 				<% end %>
+				<div class="status_updates">
+					<% project.status_updates.by_created_on.each do |status_update| %>
+						<div class="status_update">
+							<%= status_update.description %>
+							<div class="status_update_meta">
+								<span class="date"><%= time_ago(status_update.created_at) %></span> &middot;
+								<span class="email">scottweisman<%#= current_user.email if current_user %></span>
+							</div>
+						</div>
+					<% end %>
+				</div>
 			</div>
+		<% end %>
+		<% end %>
+		<div class="project new_project">
+			<%= form_for(Project.new) do |f| %>
+				<%= f.text_field :name, placeholder: 'Add a new project' %>
+			<% end %>
 		</div>
-	<% end %>
-</div>
+	</div>
+
+<% else %>
+	<div class="text-center">
+		<h4>Join this company by signing into Github</h4>
+		<%= link_to "Sign in with Github", omniauth_authorize_path(User, "github"), class: 'button' %>
+	</div>
+
+<% end %>
