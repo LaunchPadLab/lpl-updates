@@ -26,11 +26,9 @@ end
 
 group :development do
   gem 'quiet_assets'
-  gem 'faker'
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem "bullet"
 end
 
 group :development, :test do
