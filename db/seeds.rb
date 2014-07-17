@@ -4,6 +4,8 @@ if Rails.env.development?
   Project.destroy_all
   StatusUpdate.destroy_all
 
+  user = User.create!(email: 'scott@launchpadlab.com', username: 'scottweisman')
+
 	company = Company.create!(name: 'LaunchPad Lab')
 
 	projects = ["Content Lab", "MDA", "Tukaiz"]
@@ -24,7 +26,7 @@ if Rails.env.development?
 
 	status_updates.each do |status_update|
 		project = Project.all.sample
-		project.status_updates.create!(description: status_update)
+		project.status_updates.create!(description: status_update, user_id: user.id)
 	end
 
 

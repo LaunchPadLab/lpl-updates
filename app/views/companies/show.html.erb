@@ -8,7 +8,7 @@
 				<h3><%= project.name %></h3>
 				<%= form_for(StatusUpdate.new) do |f| %>
 					<%= f.hidden_field :project_id, value: project.id %>
-					<%#= f.hidden_field :user_id, value: current_user.id %>
+					<%= f.hidden_field :user_id, value: current_user.id %>
 					<%= f.text_field :description, placeholder: 'update' %>
 				<% end %>
 				<div class="status_updates">
@@ -17,7 +17,7 @@
 							<%= status_update.description %>
 							<div class="status_update_meta">
 								<span class="date"><%= time_ago(status_update.created_at) %></span> &middot;
-								<span class="email"><%= current_user.username if current_user %></span>
+								<span class="email"><%= status_update.user.username if current_user %></span>
 							</div>
 						</div>
 					<% end %>
