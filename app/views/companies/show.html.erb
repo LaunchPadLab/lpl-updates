@@ -3,7 +3,6 @@
 <% if current_user %>
 
 	<div class="projects clearfix">
-		<% 5.times do %>
 		<% @projects.each do |project| %>
 			<div class="project">
 				<h3><%= project.name %></h3>
@@ -24,7 +23,6 @@
 					<% end %>
 				</div>
 			</div>
-		<% end %>
 		<% end %>
 		<div class="project new_project">
 			<%= form_for(Project.new) do |f| %>
