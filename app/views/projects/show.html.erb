@@ -17,6 +17,11 @@
         <li>Ryan Francis</li>
         <li>Katie Astrauskas</li>
       </ul>
+      <%= form_for(@team_member) do |f| %>
+        <%= f.hidden_field :project_id, value: @project.id %>
+        <%= f.hidden_field :project_lead, value: false %>
+        <%= f.text_field :user_id, placeholder: 'Add a member to the team' %>
+      <% end %>
   </div>
   <div class="large-9 columns">
     <h2>Updates:</h2>

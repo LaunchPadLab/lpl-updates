@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @team_member = TeamMember.new
   end
 
   def new
