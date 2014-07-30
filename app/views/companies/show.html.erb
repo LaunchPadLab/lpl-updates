@@ -5,7 +5,7 @@
 	<div class="projects clearfix">
 		<% @projects.each do |project| %>
 			<div class="project">
-				<h3><%= project.name %></h3>
+				<h3><%= link_to project.name, project %><span><%= link_to "✕", project, method: :delete, confirm: 'Delete this project? You will lose all related updates.', :class => "project_destroy" %></span></h3>
 				<%= form_for(StatusUpdate.new) do |f| %>
 					<%= f.hidden_field :project_id, value: project.id %>
 					<%= f.hidden_field :user_id, value: current_user.id %>
