@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   def show
-    @projects = @company.projects.order('name ASC')
+    @projects = @company.projects.includes(status_updates: :user)
     cookies[:company_id] = @company.id
   end
 

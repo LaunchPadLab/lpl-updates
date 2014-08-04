@@ -13,14 +13,15 @@
   <div class="large-3 columns team_list">
     <h4>Project Team</h4>
       <ul class="unstyled">
-        <li><i class="fa fa-check-circle"></i> Scott Weisman</li>
-        <li>Ryan Francis</li>
-        <li>Katie Astrauskas</li>
+        <% @project.team_members.each do |team_member| %>
+          <li><%= team_member.user.username %></li>
+        <% end %>
       </ul>
       <%= form_for(@team_member) do |f| %>
         <%= f.hidden_field :project_id, value: @project.id %>
         <%= f.hidden_field :project_lead, value: false %>
-        <%= f.text_field :user_id, placeholder: 'Add a member to the team' %>
+        <%= f.autocomplete_field :username, autocomplete_user_username_projects_path, :id_element => '#team_member_user_id' %>
+        <%= f.hidden_field :user_id %>
       <% end %>
   </div>
   <div class="large-9 columns">

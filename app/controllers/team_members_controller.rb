@@ -40,6 +40,6 @@ class TeamMembersController < ApplicationController
     end
 
     def team_member_params
-      params.require(:team_member).permit(:project_id, :user_id, :project_lead)
+      params.require(:team_member).permit(:project_id, :user_id, :username, :project_lead)
     end
 end

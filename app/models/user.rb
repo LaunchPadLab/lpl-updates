@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
 
   has_many :status_updates
+  has_many :team_members
   belongs_to :company
 
   def self.from_omniauth(auth)
