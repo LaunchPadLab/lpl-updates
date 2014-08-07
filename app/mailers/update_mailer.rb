@@ -7,7 +7,7 @@ class UpdateMailer < ActionMailer::Base
     @team_members = project.users
     @team_members.each do |team_member|
       @team_member = team_member
-      mail to: team_member.email, subject: "Weekly Project Update"
+      mail to: team_member.email, reply_to: "inbound" + @project.id.to_s + "@katie32291.bymail.in", subject: "Weekly Project Update"
     end
   end
 
