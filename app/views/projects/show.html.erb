@@ -32,7 +32,7 @@
       <%= f.text_field :description, placeholder: 'New Update' %>
     <% end %>
     <div class="status_updates">
-      <% @project.status_updates.by_created_on.each do |status_update| %>
+      <% @project.status_updates.each do |status_update| %>
         <div class="status_update">
           <%= link_to "✕", status_update, method: :delete, confirm: 'Delete this update?' %>
           <%= status_update.description %>
