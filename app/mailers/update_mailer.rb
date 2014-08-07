@@ -1,5 +1,6 @@
 class UpdateMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "from@example.com",
+          reply_to: "inbound@katie32291.bymail.in"
 
   def weekly_update(project)
     @project = project

@@ -77,8 +77,14 @@ GEM
       sass (>= 3.2.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
+    griddler (1.0.0)
+      htmlentities
+      rails (>= 3.2.0)
+    griddler-sendgrid (0.0.1)
+      griddler
     hashie (3.2.0)
     hike (1.2.3)
+    htmlentities (4.3.2)
     i18n (0.6.9)
     jbuilder (2.1.1)
       activesupport (>= 3.0.0, < 5)
@@ -220,6 +226,8 @@ DEPENDENCIES
   foreman
   foundation-rails
   friendly_id (~> 5.0.0)
+  griddler
+  griddler-sendgrid
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails

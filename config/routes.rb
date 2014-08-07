@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
+  mount_griddler
+
   resources :companies
   resources :status_updates
   resources :projects do

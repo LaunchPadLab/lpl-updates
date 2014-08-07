@@ -1,1 +1,13 @@
-<h1>YO</h1>
+<p>-- REPLY ABOVE THIS LINE --</p>
+
+<h1>Weekly Update for <%= @project.name %></h1>
+
+<h3><%= @team_member.username %>, here are the updates from the past week:</h3>
+
+<ul>
+  <% @project.recent_updates.each do |update| %>
+    <li><%= update.description %> - <%= update.user.username %></li>
+  <% end %>
+</ul>
+
+<h3>Have a new update on this project? Reply to this email to share your update with the team.</h3>
