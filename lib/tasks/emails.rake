@@ -1,18 +1,24 @@
 namespace :email do
 
   task :weekly_project_update => :environment do
-    Project.each do |project|
-      UpdateMailer.weekly_update(project).deliver
+    Company.all.each do |company|
+      UpdateMailer.weekly_update(company).deliver
+    end
+  end
+
+  task :weekly_update_request => :environment do
+    Project.all.each do |project|
+      UpdateMailer.updates_request(project).deliver
     end
   end
 
   task :test_weekly_project_update => :environment do
-    company = Company.find_by_id(1)
+    company = Company.first
     UpdateMailer.weekly_update(company).deliver
   end
 
   task :test_weekly_update_request => :environment do
-    project = Project.find_by(name: "test")
+    project = Company.first.projects.first
     UpdateMailer.updates_request(project).deliver
   end
 

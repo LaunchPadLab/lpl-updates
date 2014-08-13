@@ -19,7 +19,11 @@
       </ul>
       <%= form_for(@team_member) do |f| %>
         <%= f.hidden_field :project_id, value: @project.id %>
-        <%= f.hidden_field :project_lead, value: false %>
+        <% if @project.team_members.count < 1 %>
+          <%= f.hidden_field :project_lead, value: true %>
+        <% else %>
+          <%= f.hidden_field :project_lead, value: false %>
+        <% end %>
         <%= f.autocomplete_field :username, autocomplete_user_username_projects_path, :id_element => '#team_member_user_id' %>
         <%= f.hidden_field :user_id %>
       <% end %>
