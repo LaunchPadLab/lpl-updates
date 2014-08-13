@@ -7,8 +7,13 @@ namespace :email do
   end
 
   task :test_weekly_project_update => :environment do
+    company = Company.find_by_id(1)
+    UpdateMailer.weekly_update(company).deliver
+  end
+
+  task :test_weekly_update_request => :environment do
     project = Project.find_by(name: "test")
-    UpdateMailer.weekly_update(project).deliver
+    UpdateMailer.updates_request(project).deliver
   end
 
 end

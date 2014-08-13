@@ -8,4 +8,8 @@ class Project < ActiveRecord::Base
     self.status_updates.where("created_at >= ?", 1.week.ago.utc)
   end
 
+  def team_lead
+    self.users.first
+  end
+
 end

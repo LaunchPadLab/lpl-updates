@@ -5,7 +5,7 @@
     <h1><%= @project.name %> - <%= link_to @project.company.name, @project.company %></h1>
   </div>
   <div class="large-4 columns project_links">
-    <%= link_to 'Back', @project.company %> | <%= link_to 'Edit Project', edit_project_path(@project) %> | <%= link_to "Delete Project", @project, method: :delete, confirm: 'Delete this project? You will lose all related updates.', :class => "delete_link" %>
+    <%= link_to 'Back', @project.company %> | <%= link_to 'Edit Project', edit_project_path(@project) %> | <%= link_to "Delete Project", @project, method: :delete, data: { confirm: 'Delete this project? You will lose all related updates.' }, :class => "delete_link" %>
   </div>
 </div>
 
@@ -34,7 +34,7 @@
     <div class="status_updates">
       <% @project.status_updates.each do |status_update| %>
         <div class="status_update">
-          <%= link_to "✕", status_update, method: :delete, confirm: 'Delete this update?' %>
+          <%= link_to "✕", status_update, method: :delete, data: {confirm: 'Delete this update?' } %>
           <%= status_update.description %>
           <div class="status_update_meta">
             <span class="date"><%= time_ago(status_update.created_at) %></span> &middot;

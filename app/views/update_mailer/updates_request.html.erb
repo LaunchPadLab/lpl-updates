@@ -5,20 +5,23 @@
 <meta charset="utf-8">
 </head>
 <body style="background-color: rgb(240,240,240); font-family: Lucida Grande;" bgcolor="rgb(240,240,240)">
-  <p style="content:''; height: 15px;"></p>
+<p align="center">-- REPLY ABOVE THIS LINE --</p>
   <div class="main" style="padding-top: 0px; border-radius: 5px; background-color: white; margin: 30px 80px; border: 2px solid rgb(184,184,184); margin-top: 20px;">
     <h1 style="text-align: center; border-radius: 5px 5px 0px 0px; border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: rgb(184,184,184); margin: 0px 20px 15px; padding: 15px 20px;" align="center"><%= image_tag 'http://currencyofhappiness.com/wp-content/uploads/2013/10/LPL_logo_transpBG.png', width: "300px" %></h1>
     <div class="body" style="padding: 0px 20px 30px;">
-    <h2 style="text-align: center;" align="center">Weekly Project Digest</h2>
-    <% @company.projects.each do |project| %>
-      <% if project.status_updates.count > 0 %>
-        <h4 style="background-color: rgb(240,240,240); padding: 5px 15px;"><%= project.name %></h4>
-        <p style="padding: 0px 15px; margin-bottom: 30px;"><%= project.status_updates.last.description %></p>
-      <% end %>
-    <% end %>
+    <h2 style="text-align: center;" align="center"><%= @project.name %> Updates</h2>
+    <h4>What have you accomplished this week on <%= @project.name %>?</h4>
+    <p>For example:</p>
+    <ul>
+      <li>What went well?</li>
+      <li>What could have gone better?</li>
+      <li>What's on tap for next week?</li>
+    </ul>
+
+    <p>Reply to this email, and your updates will be sent to the <%= @project.name %> team for Monday.</p>
+
     </div>
-    </div>
+  </div>
 
 </body>
 </html>
-
