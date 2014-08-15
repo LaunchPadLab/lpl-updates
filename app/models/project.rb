@@ -12,4 +12,8 @@ class Project < ActiveRecord::Base
     self.users.first
   end
 
+  def email
+    "inbound" + self.id.to_s + ENV['INBOUND_EMAIL']
+  end
+
 end
