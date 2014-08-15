@@ -2,6 +2,33 @@ h1.company_name {
 	padding-left: 18px;
 }
 
+.team_list {
+	margin-top: 15px;
+	background: #f6f6f6;
+	ul {
+		margin-left: 0px;
+		li {
+			list-style-type: none;
+			&:nth-of-type(1) {
+				font-weight: bold;
+				i {
+					color: $success-color;
+				}
+			}
+		}
+	}
+}
+
+.project_links {
+	text-align: right;
+	.delete_link {
+		color: $warning-color;
+		&:hover {
+			color: $alert-color;
+		}
+	}
+}
+
 .projects {
 	margin: 0 10px;
 	float: left;
@@ -20,6 +47,15 @@ h1.company_name {
 	}
 }
 
+.project_destroy {
+	float: right;
+	margin-right: 8px;
+	color: $secondary-color;
+	&:hover {
+		color: $alert-color;
+	}
+}
+
 #status_update_description {
 	width: 290px;
 	margin-left: 5px;
@@ -28,6 +64,13 @@ h1.company_name {
 .status_update {
 	border-bottom: 1px solid #ddd;
 	padding: 6px;
+	a {
+		color: $secondary-color;
+		margin-right: 15px;
+		&:hover {
+			color: $alert-color;
+		}
+	}
 }
 
 .status_update_meta {

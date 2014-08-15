@@ -1,9 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<div class="row">
+  <div class="large-8 columns">
+    <h1><%= @project.name %> - <%= link_to @project.company.name, @project.company %></h1>
+  </div>
+  <div class="large-4 columns project_links">
+    <%= link_to 'Back', @project.company %> | <%= link_to 'Edit Project', edit_project_path(@project) %> | <%= link_to "Delete Project", @project, method: :delete, data: { confirm: 'Delete this project? You will lose all related updates.' }, :class => "delete_link" %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="row">
+  <div class="large-3 columns team_list">
+    <h4>Project Team</h4>
+      <ul class="unstyled">
+        <% @project.team_members.each do |team_member| %>
+          <li><%= team_member.user.username %></li>
+        <% end %>
+      </ul>
+      <%= form_for(@team_member) do |f| %>
+        <%= f.hidden_field :project_id, value: @project.id %>
+        <% if @project.team_members.count < 1 %>
+          <%= f.hidden_field :project_lead, value: true %>
+        <% else %>
+          <%= f.hidden_field :project_lead, value: false %>
+        <% end %>
+        <%= f.autocomplete_field :username, autocomplete_user_username_projects_path, :id_element => '#team_member_user_id' %>
+        <%= f.hidden_field :user_id %>
+      <% end %>
+  </div>
+  <div class="large-9 columns">
+    <h2>Updates:</h2>
+    <%= form_for(StatusUpdate.new) do |f| %>
+      <%= f.hidden_field :project_id, value: @project.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.text_field :description, placeholder: 'New Update' %>
+    <% end %>
+    <div class="status_updates">
+      <% @project.status_updates.each do |status_update| %>
+        <div class="status_update">
+          <%= link_to "✕", status_update, method: :delete, data: {confirm: 'Delete this update?' } %>
+          <%= status_update.description %>
+          <div class="status_update_meta">
+            <span class="date"><%= time_ago(status_update.created_at) %></span> &middot;
+            <span class="username"><%= status_update.user.username if current_user %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

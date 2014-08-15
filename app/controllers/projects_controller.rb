@@ -1,11 +1,13 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  autocomplete :user, :username, :full => true
 
   def index
     @projects = Project.all
   end
 
   def show
+    @team_member = TeamMember.new
   end
 
   def new

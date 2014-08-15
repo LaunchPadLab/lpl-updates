@@ -15,11 +15,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc, require: false
 # Our Gems
 gem 'foreman'
 gem 'figaro'
+gem 'griddler'
+gem 'griddler-sendgrid'
 gem 'newrelic_rpm'
 gem "devise", "~> 3.2.4"
 gem 'omniauth-github'
 gem 'foundation-rails'
 gem 'friendly_id', '~> 5.0.0'
+gem 'rails4-autocomplete'
+gem 'jquery-ui-rails'
 
 
 group :production, :staging do

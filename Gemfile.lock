@@ -77,8 +77,14 @@ GEM
       sass (>= 3.2.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
+    griddler (1.0.0)
+      htmlentities
+      rails (>= 3.2.0)
+    griddler-sendgrid (0.0.1)
+      griddler
     hashie (3.2.0)
     hike (1.2.3)
+    htmlentities (4.3.2)
     i18n (0.6.9)
     jbuilder (2.1.1)
       activesupport (>= 3.0.0, < 5)
@@ -86,6 +92,8 @@ GEM
     jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.0)
+      railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
     mail (2.5.4)
@@ -135,6 +143,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.0)
       sprockets-rails (~> 2.0)
+    rails4-autocomplete (1.1.0)
+      rails (>= 3.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -216,13 +226,17 @@ DEPENDENCIES
   foreman
   foundation-rails
   friendly_id (~> 5.0.0)
+  griddler
+  griddler-sendgrid
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   newrelic_rpm
   omniauth-github
   pg
   quiet_assets
   rails (= 4.1.0)
+  rails4-autocomplete
   rails_12factor
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.3)
