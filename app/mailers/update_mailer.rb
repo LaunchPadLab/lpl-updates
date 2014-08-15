@@ -14,7 +14,7 @@ class UpdateMailer < ActionMailer::Base
   def updates_request(project)
     @project = project
     @team_lead = project.team_lead
-    mail to: @team_lead, reply_to: @project.email, subject: "Updates this week?"
+    mail to: @team_lead.email, reply_to: @project.email, subject: "Updates this week?"
   end
 
 end
