@@ -18,7 +18,7 @@ namespace :email do
   end
 
   task :test_weekly_update_request => :environment do
-    project = Company.first.projects.first
+    project = Company.first.projects.find_by_name("Test")
     UpdateMailer.updates_request(project).deliver
   end
 

@@ -7,14 +7,14 @@ class UpdateMailer < ActionMailer::Base
     @employees = company.users
     @employees.each do |employee|
       @employee = employee
-      mail to: employee.email
+      mail to: ENV['MAILER_TEST_EMAIL']
     end
   end
 
   def updates_request(project)
     @project = project
     @team_lead = project.team_lead
-    mail to: @team_lead.email, reply_to: @project.email, subject: "Updates this week?"
+    mail to: ENV['MAILER_TEST_EMAIL'], reply_to: @project.email, subject: "Updates this week?"
   end
 
 end
