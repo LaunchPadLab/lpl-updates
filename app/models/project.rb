@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
 	belongs_to :company
 
   def recent_updates
-    self.status_updates.where("created_at >= ?", 1.week.ago.utc)
+    self.status_updates.recent
   end
 
   def team_lead
