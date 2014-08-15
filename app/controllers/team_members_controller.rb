@@ -4,7 +4,7 @@ class TeamMembersController < ApplicationController
 
     respond_to do |format|
       if @team_member.save
-        format.html { redirect_to project_path(@team_member.project), notice: "Team member added!" }
+        format.html { redirect_to @team_member.project, notice: "Team member added!" }
         format.json { render :show, status: :created, location: @team_member }
       else
         format.html { redirect_to new_team_member_path }
@@ -16,7 +16,7 @@ class TeamMembersController < ApplicationController
   def update
     respond_to do |format|
       if @team_member.update(team_member_params)
-        format.html { redirect_to project_path(@team_member.project), notice: "Team member updated!" }
+        format.html { redirect_to @team_member.project, notice: "Team member updated!" }
         format.json { render :show, status: :ok, location: @team_member }
       else
         format.html { render :edit }
@@ -28,7 +28,7 @@ class TeamMembersController < ApplicationController
   def destroy
     @team_member.destroy
     respond_to do |format|
-      format.html { redirect_to project_path(@team_member.project), notice: "#{@team_member.user.username} was removed from this project." }
+      format.html { redirect_to @team_member.project, notice: "#{@team_member.user.username} was removed from this project." }
       format.json { head :no_content }
     end
   end
