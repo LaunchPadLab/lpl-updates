@@ -1,14 +1,18 @@
 namespace :email do
 
   task :weekly_project_update => :environment do
-    Company.all.each do |company|
-      UpdateMailer.weekly_update(company).deliver
+    if Date.today.wday == 1
+      Company.all.each do |company|
+        UpdateMailer.weekly_update(company).deliver
+      end
     end
   end
 
   task :weekly_update_request => :environment do
-    Project.all.each do |project|
-      UpdateMailer.updates_request(project).deliver
+    if Date.today.wday == 5
+      Project.all.each do |project|
+        UpdateMailer.updates_request(project).deliver
+      end
     end
   end
 

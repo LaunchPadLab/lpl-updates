@@ -6,6 +6,7 @@
 		<% @projects.each do |project| %>
 			<div class="project">
 				<h3><%= link_to project.name, project %><span><%= link_to "✕", project, method: :delete, data: { confirm: 'Delete this project? You will lose all related updates.' }, :class => "project_destroy" %></span></h3>
+				<h4><%= project.team_lead.username %></h4>
 				<%= form_for(StatusUpdate.new) do |f| %>
 					<%= f.hidden_field :project_id, value: project.id %>
 					<%= f.hidden_field :user_id, value: current_user.id %>
