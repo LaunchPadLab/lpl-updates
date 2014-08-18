@@ -17,7 +17,9 @@
           <p style="padding: 0px 15px; margin-bottom: 30px;"><%= update.created_at.utc.strftime('%A, %l:%M %P') %><br /><br /><span style="font-weight: bold;"><%= update.user.username %></span> - <%= update.description %></p>
         <% end %>
       <% else %>
-        <p style="padding: 0px 15px; margin-bottom: 30px;">No updates to be seen. Did <%= project.team_lead.username %> take the week off or something? Grapefruit.</p>
+        <% if project.team_lead %>
+          <p style="padding: 0px 15px; margin-bottom: 30px;">No updates to be seen. Did <%= project.team_lead.username %> take the week off or something? Grapefruit.</p>
+        <% end %>
       <% end %>
     <% end %>
     </div>
