@@ -3,7 +3,9 @@ namespace :email do
   task :weekly_project_update => :environment do
     if Date.today.wday == 1
       Company.all.each do |company|
-        UpdateMailer.weekly_update(company).deliver
+        company.users.each do |employee|
+          UpdateMailer.weekly_update(company, employee).deliver
+        end
       end
     end
   end

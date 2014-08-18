@@ -2,13 +2,9 @@ class UpdateMailer < ActionMailer::Base
   default from: ENV['OUTBOUND_EMAIL'],
           reply_to: "inbound" + ENV['INBOUND_EMAIL']
 
-  def weekly_update(company)
+  def weekly_update(company, employee)
     @company = company
-    @employees = company.users
-    @employees.each do |employee|
-      @employee = employee
-      mail to: employee.email
-    end
+    mail to: employee.email
   end
 
   def updates_request(project)
