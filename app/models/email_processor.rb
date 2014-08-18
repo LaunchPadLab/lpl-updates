@@ -1,15 +1,12 @@
 class EmailProcessor
 
-  def initialize(email)
-    @email = email
-  end
-
-  def process
+  def self.process(email)
     user = User.find_by_email(@email.from[:email])
+    project_id = @email.to[:token].slice!("inbound").to_i
     user.status_updates.create!(
       description: @email.body,
-      user_id: 2,
-      project_id: 8
+      user_id: user.id,
+      project_id: project_id
     )
   end
 
