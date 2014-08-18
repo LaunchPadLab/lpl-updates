@@ -22,7 +22,7 @@ namespace :email do
 
   task :test_weekly_project_update => :environment do
     company = Company.first
-    UpdateMailer.weekly_update(company).deliver
+    UpdateMailer.weekly_update(company, User.find_by_username("kt32291")).deliver
   end
 
   task :test_weekly_update_request => :environment do
