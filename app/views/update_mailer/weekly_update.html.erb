@@ -14,7 +14,7 @@
       <h4 style="background-color: rgb(240,240,240); padding: 5px 15px;"><%= project.name %></h4>
       <% if project.recent_updates.count > 0 %>
         <% project.recent_updates.by_created_on.each do |update| %>
-          <p style="padding: 0px 15px; margin-bottom: 30px;"><%= update.created_at.strftime('%A, %l:%M %P') %><br /><span style="font-weight: bold;"><%= update.user.username %></span> - <%= update.description %></p>
+          <p style="padding: 0px 15px; margin-bottom: 30px;"><%= update.created_at.strftime('%A, %l:%M %P') %><br /><br /><span style="font-weight: bold;"><%= update.user.username %></span> - <%= update.description %></p>
         <% end %>
       <% else %>
         <p style="padding: 0px 15px; margin-bottom: 30px;">No updates to be seen. Did <%= project.team_lead %> take the week off or something? Grapefruit.</p>
