@@ -8,6 +8,10 @@ class Project < ActiveRecord::Base
     self.status_updates.recent
   end
 
+  def recently_updated?
+    recent_updates.count > 0
+  end
+
   def team_lead
     self.users.first
   end

@@ -11,7 +11,7 @@
     <div class="body" style="padding: 0px 20px 30px;">
     <h2 style="text-align: center;" align="center"><%= @project.name %> Updates</h2>
     <h4>What have you accomplished this week on <%= @project.name %>?</h4>
-    <p>Follow <%= link_to "this link", 'http://pad.dev/projects/' + @project.id.to_s + '/status_updates/new' %> to share your progress on <%= @project.name %> with everyone at <%= @project.company.name %>.</p>
+    <p>Follow <%= link_to "this link", ENV['ROOT_URL'] + '/projects/' + @project.id.to_s + '/status_updates/new' %> to share your progress on <%= @project.name %> with everyone at <%= @project.company.name %>.</p>
     <p>Good Work!</p>
     </div>
   </div>

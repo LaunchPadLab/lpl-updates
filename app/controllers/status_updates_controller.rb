@@ -1,5 +1,6 @@
 class StatusUpdatesController < ApplicationController
   before_action :set_status_update, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 
   def new
     @status_update = StatusUpdate.new
@@ -11,11 +12,7 @@ class StatusUpdatesController < ApplicationController
 
     respond_to do |format|
       if @status_update.save
-        format.html { redirect_to current_company, notice: 'Status updated!' }
-        format.json { render :show, status: :created, location: @status_update }
-      else
-        format.html { redirect_to current_company, notice: 'Sorry, there was an issue updating the status.'}
-        format.json { render json: @status_update.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

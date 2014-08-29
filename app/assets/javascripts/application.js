@@ -16,4 +16,8 @@
 //= require autocomplete-rails
 //= require foundation
 
-$(function(){ $(document).foundation(); });
+$(function(){
+
+  $(document).foundation();
+
+});

@@ -1,9 +1,16 @@
-<div class="status_update_container">
-  <%= form_for(@status_update, :url => project_status_updates_path(@project)) do |f| %>
+<div class="status_update_container" data-project-id="<%= @project.id %>">
+  <%= form_for(@status_update, :url => project_status_updates_path(@project), :remote => true) do |f| %>
   <div class="row">
-    <div class="large-8 large-centered columns logo">
+    <div class="large-8 medium-9 small-8 large-centered medium-centered small-centered columns logo">
       <%= image_tag('http://currencyofhappiness.com/wp-content/uploads/2013/10/LPL_logo_transpBG.png') %>
     </div>
+  </div>
+  <% if @project.recently_updated? %>
+    <p style='margin-top:30px;text-align:center;'>Oops! You've already submitted your weekly update for <%= @project.name %>!</p>
+    <h4 style='padding-bottom:40px;text-align:center;'>Good work :)</h4>
+  <% else %>
+  <div class="form_fields">
+  <div class="row">
     <h1>Weekly Updates for <%= @project.name %></h1>
     <% if @status_update.errors.any? %>
       <div id="error_explanation">
@@ -19,7 +26,7 @@
     </div>
     <div class="row">
       <div class="large-12 columns">
-        <%= f.label :description, "One-Sentence Overview" %>
+        <%= f.label :description, "One-Sentence Progress Overview" %>
         <%= f.text_area :description, rows: 3 %>
       </div>
     </div>
@@ -35,8 +42,8 @@
         <%= f.date_field :milestone %>
       </div>
       <div class="large-6 columns">
-        <%= f.label :weekly_rating, "Rate Your Week" %>
-        <div class="range-slider round" data-slider data-options="step: 20;">
+        <%= f.label :weekly_rating, "Rate Your Week on #{@project.name}" %><span class="left">Meh</span><span class="right">Amaze-balls</span>
+        <div class="range-slider round" data-slider>
           <span class="range-slider-handle" role="slider" tabindex="0"></span>
           <span class="range-slider-active-segment"></span>
           <%= f.hidden_field :weekly_rating %>
@@ -55,7 +62,7 @@
         <%= f.submit class: "large-12 columns button" %>
       </div>
     </div>
-    </div>
   </div>
+  <% end %>
 <% end %>
 </div>

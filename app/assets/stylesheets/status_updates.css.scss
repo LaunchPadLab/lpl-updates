@@ -13,6 +13,18 @@ body {
     box-shadow: rgb(153, 153, 153) 0px 0px 5px 0px;
     width: 600px;
     margin: 0px auto;
+    span.left, span.right {
+      font-size: 8pt;
+      margin-top: 8px;
+    }
+    span.left {
+      float: left;
+      color: $warning-color;
+    }
+    span.right {
+      float: right;
+      color: $success-color;
+    }
   }
   .logo {
     margin: 15px auto;
