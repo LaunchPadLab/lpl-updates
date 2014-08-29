@@ -1,6 +1,11 @@
 class StatusUpdatesController < ApplicationController
   before_action :set_status_update, only: [:show, :edit, :update, :destroy]
 
+  def new
+    @status_update = StatusUpdate.new
+    @project = Project.find(params[:project_id])
+  end
+
   def create
     @status_update = StatusUpdate.new(status_update_params)
 
@@ -43,6 +48,6 @@ class StatusUpdatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_update_params
-      params.require(:status_update).permit(:description, :project_id, :user_id)
+      params.require(:status_update).permit(:description, :project_id, :user_id, :milestone, :weekly_rating, :next_week)
     end
 end

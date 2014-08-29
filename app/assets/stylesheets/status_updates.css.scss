@@ -1,0 +1,21 @@
+body {
+  background-color: rgb(240, 240, 240);
+}
+.status_update_container {
+  padding-top: 50px;
+  h1 {
+    font-size: 24pt;
+    text-align: center;
+  }
+  form {
+    background: white;
+    border-radius: 5px;
+    box-shadow: rgb(153, 153, 153) 0px 0px 5px 0px;
+    width: 600px;
+    margin: 0px auto;
+  }
+  .logo {
+    margin: 15px auto;
+  }
+}
+
