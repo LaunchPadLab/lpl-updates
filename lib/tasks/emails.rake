@@ -11,11 +11,9 @@ namespace :email do
   end
 
   task :weekly_update_request => :environment do
-    if Date.today.wday == 5
-      Project.all.each do |project|
-        if project.team_lead
-          UpdateMailer.updates_request(project).deliver
-        end
+    Project.all.each do |project|
+      if project.team_lead
+        UpdateMailer.updates_request(project).deliver
       end
     end
   end
