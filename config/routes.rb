@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   mount_griddler
 
-  resources :companies
-  resources :status_updates
-  resources :projects do
+  resources :companies, only: [:create, :update, :destroy]
+  resources :projects, only: [:create, :update, :destroy] do
     get :autocomplete_user_username, :on => :collection
+    resources :status_updates, only: [:new, :create]
   end
   resources :team_members, only: [:create, :update, :destroy]
 

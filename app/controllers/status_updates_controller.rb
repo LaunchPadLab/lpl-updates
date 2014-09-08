@@ -1,16 +1,18 @@
 class StatusUpdatesController < ApplicationController
   before_action :set_status_update, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+
+  def new
+    @status_update = StatusUpdate.new
+    @project = Project.find(params[:project_id])
+  end
 
   def create
     @status_update = StatusUpdate.new(status_update_params)
 
     respond_to do |format|
       if @status_update.save
-        format.html { redirect_to current_company, notice: 'Status updated!' }
-        format.json { render :show, status: :created, location: @status_update }
-      else
-        format.html { redirect_to current_company, notice: 'Sorry, there was an issue updating the status.'}
-        format.json { render json: @status_update.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -43,6 +45,6 @@ class StatusUpdatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_update_params
-      params.require(:status_update).permit(:description, :project_id, :user_id)
+      params.require(:status_update).permit(:description, :project_id, :user_id, :milestone, :weekly_rating, :next_week)
     end
 end

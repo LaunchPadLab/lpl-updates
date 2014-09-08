@@ -30,7 +30,7 @@
   </div>
   <div class="large-9 columns">
     <h2>Updates:</h2>
-    <%= form_for(StatusUpdate.new) do |f| %>
+    <%= form_for(StatusUpdate.new, :url => project_status_updates_path(@project)) do |f| %>
       <%= f.hidden_field :project_id, value: @project.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.text_field :description, placeholder: 'New Update' %>
@@ -38,7 +38,7 @@
     <div class="status_updates">
       <% @project.status_updates.each do |status_update| %>
         <div class="status_update">
-          <%= link_to "✕", status_update, method: :delete, data: {confirm: 'Delete this update?' } %>
+          <%= link_to "✕", project_status_updates_path(@project), method: :delete, data: {confirm: 'Delete this update?' } %>
           <%= status_update.description %>
           <div class="status_update_meta">
             <span class="date"><%= time_ago(status_update.created_at) %></span> &middot;

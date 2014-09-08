@@ -9,7 +9,7 @@
 				<% if project.team_lead %>
 					<p style="text-align:right;"><%= project.team_lead.username %></p>
 				<% end %>
-				<%= form_for(StatusUpdate.new) do |f| %>
+				<%= form_for(StatusUpdate.new, :url => project_status_updates_path(project)) do |f| %>
 					<%= f.hidden_field :project_id, value: project.id %>
 					<%= f.hidden_field :user_id, value: current_user.id %>
 					<%= f.text_field :description, placeholder: 'update' %>

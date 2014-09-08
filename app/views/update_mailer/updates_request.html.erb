@@ -11,15 +11,8 @@
     <div class="body" style="padding: 0px 20px 30px;">
     <h2 style="text-align: center;" align="center"><%= @project.name %> Updates</h2>
     <h4>What have you accomplished this week on <%= @project.name %>?</h4>
-    <p>For example:</p>
-    <ul>
-      <li>What went well?</li>
-      <li>What could have gone better?</li>
-      <li>What's on tap for next week?</li>
-    </ul>
-
-    <p>Reply to this email, and your updates will be sent to the <%= @project.name %> team for Monday.</p>
-
+    <p>Follow <%= link_to "this link", ENV['ROOT_URL'] + '/projects/' + @project.id.to_s + '/status_updates/new' %> to share your progress on <%= @project.name %> with everyone at <%= @project.company.name %>.</p>
+    <p>Good Work!</p>
     </div>
   </div>
 
